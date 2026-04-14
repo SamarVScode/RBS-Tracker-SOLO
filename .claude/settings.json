@@ -1,0 +1,77 @@
+{
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
+    "DISABLE_NON_ESSENTIAL_MODEL_CALLS": "1"
+  },
+  "compactInstructions": "Preserve: current SESSION_ID, active agent name and task, ALL file paths created or modified this session, Firestore collection names, errors that were resolved and HOW they were fixed, pending task queue items, platform (react-web/nextjs/react-native), complexity_level and conditional flags (force_haiku, readme_update_needed, pre_commit_needed). Discard: verbose code already saved to files, intermediate planning and reasoning, diagnostic output, hook logs, retry attempts. After compaction: re-read .swarm/pre-compact-snapshot.json to restore task queue, checkpoint state, and complexity flags.",
+  "model": "claude-sonnet-4-6",
+  "teammateMode": "in-process",
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/UserPromptSubmit.sh"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/PreToolUse.sh"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash|Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/PostToolUse.sh"
+          }
+        ]
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/PreCompact.sh"
+          }
+        ]
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/TeammateIdle.sh"
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .claude/hooks/TaskCompleted.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

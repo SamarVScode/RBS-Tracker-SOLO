@@ -1,0 +1,12 @@
+# Enforce LF line endings for all shell scripts — prevents Windows CRLF breaking hooks
+*.sh        text eol=lf
+*.md        text eol=lf
+*.json      text eol=lf
+*.ts        text eol=lf
+*.tsx       text eol=lf
+*.js        text eol=lf
+*.jsx       text eol=lf
+*.txt       text eol=lf
+
+# Windows batch files legitimately use CRLF
+*.cmd       text eol=crlf

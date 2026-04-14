@@ -1,0 +1,12 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+.claude/settings.local.json
+.swarm/retry-budget.json
+.swarm/.rtk-active
+.swarm/pre-compact-snapshot.json
+.swarm/*.lock
+.swarm/agent.log
+.swarm/
