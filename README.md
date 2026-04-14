@@ -86,5 +86,4 @@ No auth routes in v1. Layout wraps all routes.
 - [ ] Add Firebase project + replace config placeholders (user task)
 - [ ] Optional: multi-patient auth
 
-## TOKEN BUDGET
-Estimated: ~12,000 | Remaining: ~116,000 | Warning: false
+
